@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Entry;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/openExternal/{entry}', function (String $entry) {
+    // dd(Entry::find($entry)->url);
+	$url = Entry::find($entry)->url;
+
+	if($url == null || $url == "") {
+		// dd($url);
+		return route('admin.entries');
+	}
+	
+	return redirect()->to($url);
+})->name('openExternal');
