@@ -6,5 +6,5 @@ use Filament\Tables\Columns\Column;
 
 class externalLink extends Column
 {
-    protected string $view = 'tables.columns.external-link';
+    protected string $view = 'tables.columns.external-link'; //
 }
